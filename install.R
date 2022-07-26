@@ -1,0 +1,6 @@
+install.packages("tidyverse")
+install.packages("deldir")
+install.packages("sp")
+install.packages("xml2")
+install.packages("plyr")
+install.packages("viridis")
