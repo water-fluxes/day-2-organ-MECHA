@@ -16,7 +16,6 @@
         4: Endodermis full suberization and exodermal Casparian strip (radial walls) -->
         <Maturityrange> <!-- All the listed barrier types will be simulated and reported in separate files "***b1", "***b2", "***b3",... -->
 			<Maturity Barrier="1" height="200"  Nlayers="1"/>
-			<Maturity Barrier="2" height="200"  Nlayers="1"/>
 			<Maturity Barrier="4" height="200"  Nlayers="1"/>
         </Maturityrange>
 		<Printrange>
