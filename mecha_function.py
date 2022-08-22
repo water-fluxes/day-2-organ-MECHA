@@ -220,6 +220,7 @@ def mecha():
         G.add_node(wid, indice=wid, type="apo", position=(mx,my), length=length) #Saving wall attributes for graphical display (id, border, type, X and Y coordinates)
     
     NwallsJun=Nwalls+jid
+    Ntot=NwallsJun+Ncells
     position=nx.get_node_attributes(G,'position') #Nodes XY positions (micrometers)
     
     #Junction nodes are pointwise by definition so their length is null, except for junctions at root surface, which are attributed a quarter of the length of each surface neighbouring wall for radial transport 
