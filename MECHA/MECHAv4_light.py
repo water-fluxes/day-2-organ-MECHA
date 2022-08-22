@@ -57,7 +57,8 @@ for passage_cell in passage_cell_range:
 PPP=list()
 InterCid=list() #Aerenchyma is classified as intercellular space
 for aerenchyma in aerenchyma_range:
-    InterCid.append(int(aerenchyma.get("id"))) #Cell id starting at 0
+    if int(aerenchyma.get("id"))>0:
+        InterCid.append(int(aerenchyma.get("id"))) #Cell id starting at 0
 InterC_perim1=float(etree.parse(directory + Project + 'in/' + Geom).getroot().xpath('InterC_perim1')[0].get("value"))
 InterC_perim2=float(etree.parse(directory + Project + 'in/' + Geom).getroot().xpath('InterC_perim2')[0].get("value"))
 InterC_perim3=float(etree.parse(directory + Project + 'in/' + Geom).getroot().xpath('InterC_perim3')[0].get("value"))
@@ -1343,6 +1344,16 @@ for h in range(Nhydraulics):
         
         Kmb=zeros((Nmb,1)) #Stores membranes conductances for the second K loop
         jmb=0 #Index of membrane in Kmb
+        K_axial=zeros((Ntot,1)) #Vector of apoplastic and plasmodesmatal axial conductances
+            if Barrier>0: #K_xyl_spec calculated from Poiseuille law (cm^3/hPa/d)
+                for cid in listxyl:
+                    K_axial[cid]=cellarea[cid-NwallsJun]**2/(8*3.141592*height*1.0E-05/3600/24)*1.0E-12 #(micron^4/micron)->(cm^3) & (1.0E-3 Pa.s)->(1.0E-05/3600/24 hPa.d) 
+                K_xyl_spec=sum(K_axial)*height/1.0E04
+                for cid in listsieve:
+                    K_axial[cid]=cellarea[cid-NwallsJun]**2/(8*3.141592*height*1.0E-05/3600/24)*1.0E-12 #(micron^4/micron)->(cm^3) & (1.0E-3 Pa.s)->(1.0E-05/3600/24 hPa.d) 
+            else:
+                K_xyl_spec=0.0
+        
         list_ghostwalls=[] #"Fake walls" not to be displayed
         list_ghostjunctions=[] #"Fake junctions" not to be displayed
         nGhostJunction2Wall=0
@@ -4218,6 +4229,8 @@ for h in range(Nhydraulics):
             myfile.write("Cross-section height: "+str(height*1.0E-04)+" cm \n")
             myfile.write("\n")
             myfile.write("Cross-section perimeter: "+str(perimeter[0])+" cm \n")
+            myfile.write("\n")
+            myfile.write("Xylem specific axial conductance: "+str(K_xyl_spec)+" cm^4/hPa/d \n")
             myfile.write("\n")
             myfile.write("Cross-section radial conductivity: "+str(kr_tot[iMaturity][0])+" cm/hPa/d \n")
             myfile.write("\n")
