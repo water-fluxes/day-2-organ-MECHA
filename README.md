@@ -23,7 +23,7 @@ then create an environment for python and add those dependencies:
   
 with anaconda:
 - environment
-- create
+- create env with python 3.7
 - (play button)  open terminal
 ```
 conda install numpy
