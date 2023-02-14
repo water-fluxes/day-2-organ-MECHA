@@ -31,6 +31,7 @@
     <!-- ID number of passage cells in the endodermis, ideally in front of early metaxylem vessels -->
   </passage_cell_range>
   <aerenchyma_range>
+
     <!-- ID number of aerenchyma "cells" in the cortex -->
   </aerenchyma_range>
   <InterC_perim_search value="0"/>

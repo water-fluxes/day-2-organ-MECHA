@@ -59,11 +59,12 @@ def mecha():
     passage_cell_range=etree.parse(directory + Project + 'in/' + Geom).getroot().xpath('passage_cell_range/passage_cell')
     aerenchyma_range=etree.parse(directory + Project + 'in/' + Geom).getroot().xpath('aerenchyma_range/aerenchyma')
     passage_cell_ID=[]
+    InterCid=list() #Aerenchyma is classified as intercellular space
     for aerenchyma in aerenchyma_range:
         if int(aerenchyma.get("id"))>0:
             InterCid.append(int(aerenchyma.get("id"))) #Cell id starting at 0
     PPP=list()
-    InterCid=list() #Aerenchyma is classified as intercellular space
+    
     for aerenchyma in aerenchyma_range:
         InterCid.append(int(aerenchyma.get("id"))) #Cell id starting at 0
     InterC_perim1=float(etree.parse(directory + Project + 'in/' + Geom).getroot().xpath('InterC_perim1')[0].get("value"))
@@ -368,7 +369,7 @@ def mecha():
         cellarea[cellnumber1] += (position_junctions[wid0][0+j]+position[wid0][0])*(position_junctions[wid0][1+j]-position[wid0][1]) #Back to the first node
         cellarea[cellnumber1] /= -2.0
     
-    Cell_connec=-ones((Ncells,35),dtype=int) #Connected cells for further ranking
+    Cell_connec=-ones((Ncells,65),dtype=int) #Connected cells for further ranking
     nCell_connec=zeros((Ncells,1),dtype=int) #Quantity of cell to cell connectionsC:\Users\heymansad
     for i in range(0, len(Walls_loop)): #Loop on walls, by cell - wall association, hence a wall can be repeated if associated to two cells. Parent structure: Cell/Walls/Wall
                	r1 = Walls_loop[i] #Points to the current wall

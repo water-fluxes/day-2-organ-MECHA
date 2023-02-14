@@ -3,7 +3,7 @@
 
 <properties>
 	<!-- OS -->
-	<OS value='Mac'/> <!-- The current version seems fully compatible for both Mac and Windows -->
+	<OS value='Windows'/> <!-- The current version seems fully compatible for both Mac and Windows -->
 	
 	<!-- Main output folder -->
 	<Output path='out/'/> <!-- Path to output file folders, no"&" sign allowed in the folder name -->
