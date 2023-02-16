@@ -20,13 +20,10 @@ from numpy.random import *  # for random sampling
 
 def mecha():
 # -*- coding: utf-8 -*-
-
     #Directory
     directory='./MECHA/'
-
     #Project
     Project='Projects/granar/'#BBSRC/'#'Projects/
-
     #Inputs
     Gen='Maize_General.xml'#'Arabido1_General.xml' #'MilletLR3_General.xml' #
     Geom='Maize_Geometry_aer.xml'#'Arabido4_Geometry_BBSRC.xml' #'Maize2_Geometry.xml' #''MilletLR3_Geometry.xml'    #'Wheat1_Nodal_Geometry_aerenchyma.xml' #'Maize1_Geometry.xml' #
